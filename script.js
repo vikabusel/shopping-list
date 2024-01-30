@@ -1,7 +1,7 @@
 const input = document.querySelector('#input');
 const groceries = document.querySelector('.groceries');
 
-input.addEventListener('keydown', function (event) {
+input.addEventListener('keydown', function(event) {
 
     if(event.key == 'Enter') {
         const text = input.value;
@@ -9,21 +9,17 @@ input.addEventListener('keydown', function (event) {
         const newText = document.createElement('div');
         newText.classList.add('items');
         newText.textContent = text;
-    
+        newText.addEventListener('click', function() {
+            newText.classList.toggle('done');
+          })
+
         if (text != '') {
             groceries.append(newText);
         }
 
         input.value = '';
-    };
-    
-    const newText = document.querySelectorAll('.items');
-    for (let points of newText) {
-        points.addEventListener('click', function() {
-          points.classList.toggle('done');
-        })
-      }
-})
+        }
+});
 
 
 
